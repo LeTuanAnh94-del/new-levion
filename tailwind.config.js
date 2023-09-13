@@ -7,8 +7,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {},
       boxShadow: {
+        "1.5sm": "0px 0px 10px 0px rgba(0, 0, 0, 0.1)",
         "2.5xl": "0px 4px 20px 0px rgba(0, 0, 0, 0.1)",
       },
       colors: {
@@ -17,6 +17,7 @@ module.exports = {
         magnolia: "#F7F5FA",
         neutral: {
           "grey-light": "#9387A8",
+          "dark-grey": "#362355",
         },
       },
     },

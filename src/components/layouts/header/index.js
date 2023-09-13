@@ -10,14 +10,20 @@ import {
   MenuOpenIcon,
 } from "../../../constant/icons";
 import ButtonBase from "../../buttonBase";
-import { LINK_NAVBAR } from "../../../constant/navbar";
+import { LINK_NAVBAR, MENU_LEARNING_RESOURCES } from "../../../constant/navbar";
 import Menu from "../../menu";
 
 export default function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isOpenMenuLearningResource, setIsOpenMenuLearningResource] =
+    useState(false);
 
   const handleOpenMenu = () => {
     setIsOpenMenu(!isOpenMenu);
+  };
+
+  const handleOpenMenuLearningResource = () => {
+    setIsOpenMenuLearningResource(!isOpenMenuLearningResource);
   };
 
   return (
@@ -44,7 +50,34 @@ export default function Header() {
               >
                 {link.name}
               </Link>
-              {link.name === "Learning Resources" && <ArrowIcon />}
+              {link.name === "Learning Resources" && (
+                <div
+                  className=" relative"
+                  onClick={handleOpenMenuLearningResource}
+                >
+                  <div
+                    className={`-rotate-90 cursor-pointer ${
+                      isOpenMenuLearningResource && "rotate-0"
+                    }`}
+                  >
+                    <ArrowIcon />
+                  </div>
+                  {isOpenMenuLearningResource && (
+                    <div className="absolute flex flex-col p-4 rounded bg-white shadow-1.5sm w-max">
+                      {MENU_LEARNING_RESOURCES.map((menu) => (
+                        <div key={menu} className="py-3">
+                          <Link
+                            href={menu.link}
+                            className="text-neutral-grey-light text-base font-bold"
+                          >
+                            {menu.name}
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
