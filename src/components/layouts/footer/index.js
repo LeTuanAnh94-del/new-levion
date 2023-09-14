@@ -5,7 +5,7 @@ import { IconMenuFooter, MenuFooter } from "../../../constant/menuFooter";
 
 export default function Footer() {
   return (
-    <div className="relative z-10 bg-neutral-dark-grey bg-no-repeat bg-cover">
+    <div className="relative z-10 bg-neutral-dark-grey bg-no-repeat bg-cover w-full">
       <div className="flex flex-col py-12 gap-6 items-center">
         <div className="text-white">
           <Image

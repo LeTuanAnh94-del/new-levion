@@ -15,10 +15,16 @@ module.exports = {
         cultured: "#F5F2F9",
         primary: "#9453FF",
         magnolia: "#F7F5FA",
+        lavender: "#EDE3FF",
+        "russian-violet": "#281C42",
         neutral: {
           "grey-light": "#9387A8",
           "dark-grey": "#362355",
+          grey: "#554766",
         },
+      },
+      borderRadius: {
+        "4xl": "40px",
       },
     },
   },
