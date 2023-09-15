@@ -1,5 +1,7 @@
-import "../styles/globals.css";
 import "swiper/css";
+
+import "../styles/globals.css";
+import "../styles/swiper.css";
 
 import Header from "../components/layouts/header";
 import Footer from "../components/layouts/footer";

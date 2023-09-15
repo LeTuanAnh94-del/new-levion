@@ -27,7 +27,7 @@ export default function Header() {
   };
 
   return (
-    <div className="shadow-2.5xl z-10 relative w-full">
+    <div className="shadow-2.5xl z-10 relative w-full bg-white">
       <div className="flex px-4 py-6 justify-between items-center lg:px-20">
         <Link href={"/"}>
           <div className="flex lg:hidden">

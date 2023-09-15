@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-export default function CardReason() {
+export default function CardReason({ dataReason }) {
   return (
-    <div className="p-4 rounded-lg border-2 border-solid border-magnolia bg-white">
+    <div className="p-4 rounded-lg border-2 border-solid border-magnolia bg-white h-full lg:border-neutral-grey-lightest">
       <div className="flex flex-col gap-4">
         <div className="p-2 rounded bg-lavender w-fit">
           <Image
@@ -14,11 +14,10 @@ export default function CardReason() {
         </div>
         <div className="flex flex-col gap-1">
           <p className="text-neutral-dark-grey text-xl font-bold">
-            Diverse courses of choice
+            {dataReason?.title}
           </p>
-          <p className="text-neutral-grey-light text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id sodales
-            non interdum eget. Platea et quam magna tortor, dolor.
+          <p className="text-neutral-grey-light text-sm lg:text-base">
+            {dataReason?.desc}
           </p>
         </div>
       </div>

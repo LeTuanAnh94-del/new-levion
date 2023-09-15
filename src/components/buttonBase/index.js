@@ -1,13 +1,14 @@
 const SIZE_BUTTON = {
-  small: "px-6 py-2",
+  sm: "px-6 py-2 lg:px-6 lg:py-4",
+  small: "px-6 py-2 lg:px-10 lg:py-4",
 };
 
 const COLOR_BUTTON = {
   outline: {
-    normal: "rounded border border-solid border-primary",
+    normal: "rounded border border-solid border-primary lg:rounded-lg",
   },
   filled: {
-    normal: "rounded bg-primary",
+    normal: "rounded bg-primary lg:rounded-lg",
   },
 };
 
