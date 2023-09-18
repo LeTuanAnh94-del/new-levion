@@ -30,9 +30,12 @@ module.exports = {
       borderRadius: {
         "4xl": "40px",
         input: "6px 0px 0px 6px",
+        "input-lg": "10px 0px 0px 10px",
         button: "0px 6px 6px 0px",
+        "button-lg": "0px 10px 6px 0px",
       },
       fontSize: {
+        "3.5xl": ["32px", "40px"],
         "4.5xl": ["40px", "48px"],
       },
       gap: {

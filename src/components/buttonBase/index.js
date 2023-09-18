@@ -1,6 +1,12 @@
 const SIZE_BUTTON = {
-  sm: "px-6 py-2 lg:px-6 lg:py-4",
-  small: "px-6 py-2 lg:px-10 lg:py-4",
+  sm: "px-6 py-2 ",
+  small: "px-6 py-2 ",
+};
+
+const SIZE_RESPONSIVE = {
+  none: "lg:px-6 lg:py-2",
+  sm: "lg:px-6 lg:py-4",
+  small: "lg:px-10 lg:py-4",
 };
 
 const COLOR_BUTTON = {
@@ -16,11 +22,13 @@ export default function ButtonBase({
   title,
   sizeButton = "small",
   variant = "filled",
+  sizeResponsive = "small",
   className,
 }) {
   const classButtonByStatus = buildStyleButton({
     sizeButton,
     variant,
+    sizeResponsive,
   });
 
   return (
@@ -28,6 +36,6 @@ export default function ButtonBase({
   );
 }
 
-const buildStyleButton = ({ variant, sizeButton }) => {
-  return `${SIZE_BUTTON[sizeButton]} ${COLOR_BUTTON[variant].normal}`;
+const buildStyleButton = ({ variant, sizeButton, sizeResponsive }) => {
+  return `${SIZE_BUTTON[sizeButton]} ${COLOR_BUTTON[variant].normal} ${SIZE_RESPONSIVE[sizeResponsive]}`;
 };

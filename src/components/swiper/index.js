@@ -47,7 +47,7 @@ export default function SwiperImage({ children }) {
   }
 
   return (
-    <div style={{ width: `${innerWidth - 16}px` }} className="h-full lg:px-16">
+    <div style={{ width: `${innerWidth - 17}px` }} className="h-full lg:px-16">
       <Swiper
         spaceBetween={spaceBetween}
         slidesPerView={slidesPreview}

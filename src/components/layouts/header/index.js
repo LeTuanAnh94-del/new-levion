@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   ArrowIcon,
@@ -26,8 +26,22 @@ export default function Header() {
     setIsOpenMenuLearningResource(!isOpenMenuLearningResource);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1024) {
+        setIsOpenMenu(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div className="shadow-2.5xl z-10 relative w-full bg-white">
+    <div className="shadow-2.5xl z-50 relative w-full bg-white">
       <div className="flex px-4 py-6 justify-between items-center lg:px-20">
         <Link href={"/"}>
           <div className="flex lg:hidden">
@@ -92,10 +106,12 @@ export default function Header() {
             title={"Sign In"}
             className={"text-primary text-base font-bold hidden lg:block"}
             variant="outline"
+            sizeResponsive="none"
           />
           <ButtonBase
             title={"Sign Up"}
             className={"text-white text-base font-bold hidden lg:block"}
+            sizeResponsive="none"
           />
         </div>
       </div>

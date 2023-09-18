@@ -18,7 +18,7 @@ export default function CardReview({ dataReviews }) {
             <IconStar />
           </div>
         </div>
-        <div className="text-neutral-grey text-sm lg:text-xl line-clamp-6">
+        <div className="text-neutral-grey text-sm line-clamp-3 lg:text-xl lg:line-clamp-6">
           {dataReviews?.introduce}
         </div>
       </div>
