@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 import {
   ArrowIcon,
@@ -18,12 +20,23 @@ export default function Header() {
   const [isOpenMenuLearningResource, setIsOpenMenuLearningResource] =
     useState(false);
 
+  const pathname = usePathname();
+  const router = useRouter();
+
   const handleOpenMenu = () => {
     setIsOpenMenu(!isOpenMenu);
   };
 
   const handleOpenMenuLearningResource = () => {
     setIsOpenMenuLearningResource(!isOpenMenuLearningResource);
+  };
+
+  const onSignIn = () => {
+    router.push("/sign-in");
+  };
+
+  const onSignUp = () => {
+    router.push("/sign-up");
   };
 
   useEffect(() => {
@@ -56,44 +69,51 @@ export default function Header() {
           />
         </Link>
         <div className="hidden lg:flex gap-6">
-          {LINK_NAVBAR.map((link) => (
-            <div key={link} className="flex py-3 items-center">
-              <Link
-                href={link.link}
-                className="text-neutral-grey-light text-base font-bold"
-              >
-                {link.name}
-              </Link>
-              {link.name === "Learning Resources" && (
-                <div
-                  className=" relative"
-                  onClick={handleOpenMenuLearningResource}
+          {LINK_NAVBAR.map((link) => {
+            const isActive = pathname === link.link;
+
+            return (
+              <div key={link} className="flex py-3 items-center">
+                <Link
+                  href={link.link}
+                  className={`text-neutral-grey-light text-base font-bold hover:border-b-2 hover:border-solid hover:border-primary hover:text-purple-500 ${
+                    isActive &&
+                    "border-b-2 border-solid border-primary text-purple-500"
+                  }`}
                 >
+                  {link.name}
+                </Link>
+                {link.name === "Learning Resources" && (
                   <div
-                    className={`-rotate-90 cursor-pointer ${
-                      isOpenMenuLearningResource && "rotate-0"
-                    }`}
+                    className=" relative"
+                    onClick={handleOpenMenuLearningResource}
                   >
-                    <ArrowIcon />
-                  </div>
-                  {isOpenMenuLearningResource && (
-                    <div className="absolute flex flex-col p-4 rounded bg-white shadow-1.5sm w-max">
-                      {MENU_LEARNING_RESOURCES.map((menu) => (
-                        <div key={menu} className="py-3">
-                          <Link
-                            href={menu.link}
-                            className="text-neutral-grey-light text-base font-bold"
-                          >
-                            {menu.name}
-                          </Link>
-                        </div>
-                      ))}
+                    <div
+                      className={`-rotate-90 cursor-pointer ${
+                        isOpenMenuLearningResource && "rotate-0"
+                      }`}
+                    >
+                      <ArrowIcon />
                     </div>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
+                    {isOpenMenuLearningResource && (
+                      <div className="absolute flex flex-col p-4 rounded bg-white shadow-1.5sm w-max">
+                        {MENU_LEARNING_RESOURCES.map((menu) => (
+                          <div key={menu} className="py-3">
+                            <Link
+                              href={menu.link}
+                              className="text-neutral-grey-light text-base font-bold"
+                            >
+                              {menu.name}
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
         <div className="flex gap-4 items-center">
           <Link href={"/"}>
@@ -104,14 +124,16 @@ export default function Header() {
           </div>
           <ButtonBase
             title={"Sign In"}
-            className={"text-primary text-base font-bold hidden lg:block"}
+            className="text-base font-bold hidden lg:block"
             variant="outline"
             sizeResponsive="none"
+            onClick={onSignIn}
           />
           <ButtonBase
             title={"Sign Up"}
             className={"text-white text-base font-bold hidden lg:block"}
             sizeResponsive="none"
+            onClick={onSignUp}
           />
         </div>
       </div>

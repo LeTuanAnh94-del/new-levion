@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
   return (
     <div className="w-full h-full flex flex-col items-center bg-cultured">
       <Header />
-      <Image
+      {/* <Image
         src={"/img/decor-1.png"}
         alt="decor"
         width={1000}
@@ -24,8 +24,8 @@ export default function App({ Component, pageProps }) {
         width={1000}
         height={805}
         className="hidden lg:block absolute right-0"
-      />
-      <div className="flex flex-col items-center max-w-screen-2xl">
+      /> */}
+      <div className="flex flex-col items-center max-w-screen-2xl w-full">
         <Component {...pageProps} />
       </div>
       <Footer />

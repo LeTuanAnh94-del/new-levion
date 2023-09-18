@@ -1,6 +1,6 @@
 const SIZE_BUTTON = {
-  sm: "px-6 py-2 ",
   small: "px-6 py-2 ",
+  base: "px-6 py-4",
 };
 
 const SIZE_RESPONSIVE = {
@@ -11,10 +11,17 @@ const SIZE_RESPONSIVE = {
 
 const COLOR_BUTTON = {
   outline: {
-    normal: "rounded border border-solid border-primary lg:rounded-lg",
+    normal:
+      "rounded border border-solid border-primary text-primary lg:rounded-lg",
+    hover: "hover:bg-primary hover:text-white",
+    disable:
+      "rounded disabled:bg-neutral-grey-lighter disabled:text-neutral-grey-lightest",
   },
   filled: {
     normal: "rounded bg-primary lg:rounded-lg",
+    hover: "hover:bg-neutral-dark-grey",
+    disable:
+      "rounded disabled:bg-neutral-grey-lightest disabled:border-neutral-grey-lighter disabled:text-neutral-grey-lighter",
   },
 };
 
@@ -24,6 +31,8 @@ export default function ButtonBase({
   variant = "filled",
   sizeResponsive = "small",
   className,
+  onClick,
+  disable = "false",
 }) {
   const classButtonByStatus = buildStyleButton({
     sizeButton,
@@ -31,11 +40,24 @@ export default function ButtonBase({
     sizeResponsive,
   });
 
+  const handleClick = () => {
+    if (!disable) return;
+    if (typeof onClick === "function") onClick();
+  };
+
   return (
-    <button className={`${classButtonByStatus} ${className}`}>{title}</button>
+    <button
+      className={`${classButtonByStatus} ${className} `}
+      onClick={handleClick}
+      disabled={!disable}
+    >
+      {title}
+    </button>
   );
 }
 
-const buildStyleButton = ({ variant, sizeButton, sizeResponsive }) => {
-  return `${SIZE_BUTTON[sizeButton]} ${COLOR_BUTTON[variant].normal} ${SIZE_RESPONSIVE[sizeResponsive]}`;
+const buildStyleButton = ({ variant, sizeButton, sizeResponsive, disable }) => {
+  return `${SIZE_BUTTON[sizeButton]} ${SIZE_RESPONSIVE[sizeResponsive]} ${
+    !disable ? COLOR_BUTTON[variant].normal : COLOR_BUTTON[variant].disable
+  } ${!disable ? COLOR_BUTTON[variant].hover : COLOR_BUTTON[variant].disable}`;
 };

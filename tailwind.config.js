@@ -26,6 +26,7 @@ module.exports = {
           "grey-lighter": "#CAC1D8",
           "grey-lightest": "#F2EBFD",
         },
+        "deep-amethyst": "#9387A8",
       },
       borderRadius: {
         "4xl": "40px",
@@ -33,6 +34,7 @@ module.exports = {
         "input-lg": "10px 0px 0px 10px",
         button: "0px 6px 6px 0px",
         "button-lg": "0px 10px 6px 0px",
+        full: "100px",
       },
       fontSize: {
         "3.5xl": ["32px", "40px"],
@@ -40,6 +42,10 @@ module.exports = {
       },
       gap: {
         5.5: "22px",
+      },
+      padding: {
+        25: "100px",
+        67.5: "270px",
       },
     },
   },
