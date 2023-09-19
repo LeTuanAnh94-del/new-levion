@@ -27,6 +27,8 @@ module.exports = {
           "grey-lightest": "#F2EBFD",
         },
         "deep-amethyst": "#9387A8",
+        "majorelle-blue": "#703DDA ",
+        "violets-are-blue": "#9370F6 ",
       },
       borderRadius: {
         "4xl": "40px",
@@ -35,6 +37,8 @@ module.exports = {
         button: "0px 6px 6px 0px",
         "button-lg": "0px 10px 6px 0px",
         full: "100px",
+        "hover-lg": "0px 0px 32px 32px",
+        "hover-sm": "32px",
       },
       fontSize: {
         "3.5xl": ["32px", "40px"],

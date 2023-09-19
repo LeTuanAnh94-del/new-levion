@@ -76,7 +76,7 @@ export default function Header() {
               <div key={link} className="flex py-3 items-center">
                 <Link
                   href={link.link}
-                  className={`text-neutral-grey-light text-base font-bold hover:border-b-2 hover:border-solid hover:border-primary hover:text-purple-500 ${
+                  className={`text-neutral-grey-light text-base font-bold hover:text-purple-500 ${
                     isActive &&
                     "border-b-2 border-solid border-primary text-purple-500"
                   }`}

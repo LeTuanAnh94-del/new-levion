@@ -5,7 +5,7 @@ import { IconMenuFooter, MenuFooter } from "../../../constant/menuFooter";
 
 export default function Footer() {
   return (
-    <div className="relative z-10 bg-neutral-dark-grey bg-no-repeat bg-cover w-full">
+    <div className="relative z-10 bg-neutral-dark-grey bg-no-repeat bg-cover w-full px-4">
       <div className="flex flex-col py-12 gap-6 items-center">
         <div className="text-white">
           <Image
@@ -21,7 +21,7 @@ export default function Footer() {
             <Link
               key={link}
               href={link.link}
-              className="text-white text-base font-bold lg:text-xl"
+              className="text-neutral-grey-lighter text-base font-bold lg:text-xl hover:text-white"
             >
               {link.name}
             </Link>

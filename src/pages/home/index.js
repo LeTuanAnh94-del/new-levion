@@ -33,7 +33,7 @@ export default function Home() {
           alt="background-home"
           width={400}
           height={200}
-          className="w-full h-auto px-4 -mt-20 lg:w-[1006px]"
+          className="w-full h-auto px-4 -mt-16 lg:w-[1006px]"
         />
       </div>
       <div className=" relative mt-12 flex flex-col items-center mx-4 mb-12 lg:mt-40 lg:gap-10 lg:mx-10 lg:mb-20 z-20">
@@ -125,7 +125,7 @@ export default function Home() {
           {Offers.map((offer) => (
             <div
               key={offer}
-              className="flex px-6 py-8 flex-col justify-start gap-6 items-center w-[242px] lg:py-14 lg:w-fit lg:items-start"
+              className="flex px-6 py-8 flex-col justify-start gap-6 items-center w-[242px] lg:py-14 lg:w-fit lg:items-start hover:bg-gradient-to-r hover:from-majorelle-blue hover:to-violets-are-blue hover:rounded-hover-sm lg:hover:rounded-hover-lg"
             >
               <div className="p-6 gap-6 rounded-2xl bg-white">
                 <Image src={offer.url} alt="offer" width={56} height={56} />

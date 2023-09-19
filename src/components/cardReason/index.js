@@ -13,7 +13,7 @@ export default function CardReason({ dataReason }) {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <p className="text-neutral-dark-grey text-xl font-bold">
+          <p className="text-neutral-dark-grey text-xl font-bold max-sm:line-clamp-1">
             {dataReason?.title}
           </p>
           <p className="text-neutral-grey-light text-sm lg:text-base">
