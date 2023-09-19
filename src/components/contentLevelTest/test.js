@@ -47,18 +47,18 @@ export default function Test() {
         />
         <div className="mx-4 flex gap-6 mb-16 lg:mb-10">
           <ButtonBase
-            title="Next"
-            sizeButton="small"
-            variant="filled"
-            className="text-white text-base font-bold lg:text-lg"
-            onClick={handleNext}
-          />
-          <ButtonBase
             title="Back"
             sizeButton="small"
             variant="outline"
             className="text-primary text-base font-bold lg:text-lg"
             onClick={handleBack}
+          />
+          <ButtonBase
+            title="Next"
+            sizeButton="small"
+            variant="filled"
+            className="text-white text-base font-bold lg:text-lg"
+            onClick={handleNext}
           />
         </div>
       </div>

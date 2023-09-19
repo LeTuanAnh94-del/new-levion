@@ -5,13 +5,18 @@ import ButtonBase from "../buttonBase";
 import { ArrowIcon } from "../../constant/icons";
 import { useState } from "react";
 
-export default function Menu() {
+export default function Menu({ handleCloseMenu }) {
   const [isOpenMenuLearningResources, setIsOpenMenuLearningResources] =
     useState(false);
 
   const handelOpenMenuLearningResources = () => {
     setIsOpenMenuLearningResources(!isOpenMenuLearningResources);
   };
+
+  const onClickLink = () => {
+    handleCloseMenu();
+  };
+
   return (
     <div className="absolute bg-white w-full shadow-2.5xl">
       <div className="flex px-4 flex-col gap-4">
@@ -38,7 +43,9 @@ export default function Menu() {
           >
             <div className="flex flex-col gap-4">
               <div className="flex items-center">
-                <Link href={link.link}>{link.name}</Link>
+                <Link href={link.link} onClick={onClickLink}>
+                  {link.name}
+                </Link>
                 {link.name === "Learning Resources" && (
                   <div
                     className={`${

@@ -39,6 +39,10 @@ export default function Header() {
     router.push("/sign-up");
   };
 
+  const handleCloseMenu = () => {
+    setIsOpenMenu(false);
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1024) {
@@ -57,7 +61,7 @@ export default function Header() {
     <div className="shadow-2.5xl z-50 relative w-full bg-white">
       <div className="flex px-4 py-6 justify-between items-center lg:px-20">
         <Link href={"/"}>
-          <div className="flex lg:hidden">
+          <div className="flex lg:hidden" onClick={handleCloseMenu}>
             <LogoIcon />
           </div>
           <Image
@@ -137,7 +141,7 @@ export default function Header() {
           />
         </div>
       </div>
-      {isOpenMenu && <Menu />}
+      {isOpenMenu && <Menu handleCloseMenu={handleCloseMenu} />}
     </div>
   );
 }
