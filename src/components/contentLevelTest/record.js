@@ -5,8 +5,13 @@ import ButtonBase from "../buttonBase";
 import SwiperImage from "../swiper";
 import CardCourse from "../cardCourse";
 import { Courses } from "../../constant/coures";
+import { Questions } from "../../constant/levelTest";
 
-export default function Record() {
+export default function Record({
+  numCorrectAnswers,
+  handleBackStep,
+  handleNextStep,
+}) {
   return (
     <div className="mt-10 mb-16 flex flex-col gap-16 lg:mt-16 lg:mb-40 lg:gap-25">
       <div className="mx-4 flex flex-col lg:mx-20 lg:px-45">
@@ -21,7 +26,7 @@ export default function Record() {
             />
             <div className="flex flex-col gap-1">
               <p className="text-primary text-2xl font-bold text-center lg:text-3.5xl">
-                Your score is 28 out of 30
+                Your score is {numCorrectAnswers} out of {Questions.length}
               </p>
               <p className="text-neutral-grey text-sm font-bold text-center lg:text-xl">
                 Your score means you might be ready to prepare for one of our
@@ -37,6 +42,7 @@ export default function Record() {
               variant="filled"
               className="text-white text-base font-bold"
               sizeResponsive="none"
+              onClick={handleNextStep}
             />
             <ButtonBase
               title="Try again"
@@ -44,6 +50,7 @@ export default function Record() {
               variant="outline"
               className="text-primary text-base font-bold"
               sizeResponsive="none"
+              onClick={handleBackStep}
             />
           </div>
         </div>
@@ -52,15 +59,13 @@ export default function Record() {
         <p className="text-neutral-dark-grey text-2xl font-bold text-center lg:text-3.5xl">
           Recommend Courses for Advanced Level
         </p>
-        <div className="">
-          <SwiperImage slidesPerView="4" spaceBetween="24">
-            {Courses.map((course) => (
-              <SwiperSlide key={course}>
-                <CardCourse course={course} />
-              </SwiperSlide>
-            ))}
-          </SwiperImage>
-        </div>
+        <SwiperImage slidesPerView="4" spaceBetween="24">
+          {Courses.map((course) => (
+            <SwiperSlide key={course}>
+              <CardCourse course={course} />
+            </SwiperSlide>
+          ))}
+        </SwiperImage>
       </div>
     </div>
   );

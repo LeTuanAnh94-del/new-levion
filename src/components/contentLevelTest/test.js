@@ -4,12 +4,16 @@ import CardQuestion from "../cardQuestion";
 import ProgressBar from "../progressBar";
 import ButtonBase from "../buttonBase";
 
-export default function Test({ handleNextStep }) {
+export default function Test({
+  handleNextStep,
+  setNumCorrectAnswers,
+  setCorrectAnswers,
+  correctAnswers,
+}) {
   const [selectedAnswer, setSelectedAnswer] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [completeQuestions, setCompleteQuestions] = useState(0);
   const [isAllQuestionsCompleted, setIsAllQuestionsCompleted] = useState(false);
-  const [correctAnswers, setCorrectAnswers] = useState({});
 
   const questionsPerPage = 5;
 
@@ -25,24 +29,46 @@ export default function Test({ handleNextStep }) {
       ...prevAnswer,
       [questionId]: answer,
     }));
-    setCompleteQuestions((prevCount) => prevCount + 1);
+
+    const answeredQuestionsCount = Object.keys({
+      ...selectedAnswer,
+      [questionId]: answer,
+    }).length;
+
+    if (correctAnswers[questionId]) {
+      setNumCorrectAnswers((prev) => prev - 1);
+    }
+
+    setCompleteQuestions(answeredQuestionsCount);
 
     const question = Questions.find((question) => question.id === questionId);
 
     if (question.correctAnswer[answer]) {
       setCorrectAnswers((prevCorrectAnswers) => ({
         ...prevCorrectAnswers,
-        [questionId]: answer,
+        [questionId]: true,
+      }));
+      setNumCorrectAnswers((prev) => prev + 1);
+    } else {
+      setCorrectAnswers((prevCorrectAnswers) => ({
+        ...prevCorrectAnswers,
+        [questionId]: false,
       }));
     }
 
-    if (completeQuestions + 1 === Questions.length) {
+    if (answeredQuestionsCount >= Questions.length) {
       setIsAllQuestionsCompleted(true);
+    } else {
+      setIsAllQuestionsCompleted(false);
     }
   };
 
   const handleNext = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    const lastPage = Math.ceil(Questions.length / questionsPerPage);
+
+    if (currentPage < lastPage) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
   };
 
   const handleBack = () => {
@@ -68,6 +94,7 @@ export default function Test({ handleNextStep }) {
             className="text-primary text-base font-bold lg:text-lg"
             onClick={handleBack}
             sizeResponsive="none"
+            disable={currentPage > 1 ? false : true}
           />
           <ButtonBase
             title={isAllQuestionsCompleted ? "Done" : "Next"}
@@ -76,6 +103,12 @@ export default function Test({ handleNextStep }) {
             className="text-white text-base font-bold lg:text-lg"
             onClick={isAllQuestionsCompleted ? handleNextStep : handleNext}
             sizeResponsive="none"
+            disable={
+              currentPage < Math.ceil(Questions.length / questionsPerPage) ||
+              isAllQuestionsCompleted
+                ? false
+                : true
+            }
           />
         </div>
       </div>

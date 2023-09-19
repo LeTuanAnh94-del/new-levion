@@ -20,7 +20,7 @@ const COLOR_BUTTON = {
     normal: "rounded bg-primary ",
     hover: "hover:bg-neutral-dark-grey",
     disable:
-      "rounded disabled:bg-neutral-grey-lightest disabled:border-neutral-grey-lighter disabled:text-neutral-grey-lighter",
+      "rounded disabled:bg-neutral-grey-lightest disabled:border-neutral-grey-lighter disabled:border disabled:text-neutral-grey-lighter",
   },
 };
 
@@ -31,16 +31,17 @@ export default function ButtonBase({
   sizeResponsive = "small",
   className,
   onClick,
-  disable = "false",
+  disable = false,
 }) {
   const classButtonByStatus = buildStyleButton({
     sizeButton,
     variant,
     sizeResponsive,
+    disable,
   });
 
   const handleClick = () => {
-    if (!disable) return;
+    if (disable) return;
     if (typeof onClick === "function") onClick();
   };
 
@@ -48,7 +49,7 @@ export default function ButtonBase({
     <button
       className={`${classButtonByStatus} ${className} `}
       onClick={handleClick}
-      disabled={!disable}
+      disabled={disable}
     >
       {title}
     </button>

@@ -7,8 +7,8 @@ export default function CardQuestion({
   selectedAnswer,
 }) {
   return (
-    <div className="flex flex-col gap-10">
-      {questions.map((question) => (
+    <div className="flex flex-col gap-10 ">
+      {questions?.map((question) => (
         <div key={question.id} className="flex flex-col gap-4 w-full px-4">
           {question?.image && (
             <Image
@@ -34,13 +34,14 @@ export default function CardQuestion({
             </div>
             <div className="flex flex-col gap-2">
               {Object.keys(question.answers).map((key) => (
-                <BaseInput
-                  key={key}
-                  type="radio"
-                  data={question.answers[key]}
-                  onSelect={() => onAnswerSelect(question.id, key)}
-                  selected={selectedAnswer[question.id] === key}
-                />
+                <div key={key}>
+                  <BaseInput
+                    type="radio"
+                    data={question.answers[key]}
+                    onSelect={() => onAnswerSelect(question.id, key)}
+                    selected={selectedAnswer?.[question.id] === key}
+                  />
+                </div>
               ))}
             </div>
           </div>
