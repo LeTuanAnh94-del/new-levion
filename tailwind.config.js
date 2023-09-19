@@ -29,6 +29,7 @@ module.exports = {
         "deep-amethyst": "#9387A8",
         "majorelle-blue": "#703DDA ",
         "violets-are-blue": "#9370F6 ",
+        orange: "#FCA50B",
       },
       borderRadius: {
         "4xl": "40px",
@@ -46,9 +47,11 @@ module.exports = {
       },
       gap: {
         5.5: "22px",
+        25: "100px",
       },
       padding: {
         25: "100px",
+        45: "180px",
         67.5: "270px",
       },
     },

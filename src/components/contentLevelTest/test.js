@@ -4,10 +4,12 @@ import CardQuestion from "../cardQuestion";
 import ProgressBar from "../progressBar";
 import ButtonBase from "../buttonBase";
 
-export default function Test() {
+export default function Test({ handleNextStep }) {
   const [selectedAnswer, setSelectedAnswer] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [completeQuestions, setCompleteQuestions] = useState(0);
+  const [isAllQuestionsCompleted, setIsAllQuestionsCompleted] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState({});
 
   const questionsPerPage = 5;
 
@@ -24,6 +26,19 @@ export default function Test() {
       [questionId]: answer,
     }));
     setCompleteQuestions((prevCount) => prevCount + 1);
+
+    const question = Questions.find((question) => question.id === questionId);
+
+    if (question.correctAnswer[answer]) {
+      setCorrectAnswers((prevCorrectAnswers) => ({
+        ...prevCorrectAnswers,
+        [questionId]: answer,
+      }));
+    }
+
+    if (completeQuestions + 1 === Questions.length) {
+      setIsAllQuestionsCompleted(true);
+    }
   };
 
   const handleNext = () => {
@@ -52,13 +67,15 @@ export default function Test() {
             variant="outline"
             className="text-primary text-base font-bold lg:text-lg"
             onClick={handleBack}
+            sizeResponsive="none"
           />
           <ButtonBase
-            title="Next"
+            title={isAllQuestionsCompleted ? "Done" : "Next"}
             sizeButton="small"
             variant="filled"
             className="text-white text-base font-bold lg:text-lg"
-            onClick={handleNext}
+            onClick={isAllQuestionsCompleted ? handleNextStep : handleNext}
+            sizeResponsive="none"
           />
         </div>
       </div>

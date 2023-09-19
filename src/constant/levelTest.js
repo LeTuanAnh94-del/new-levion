@@ -9,6 +9,12 @@ export const Questions = [
       answer_3: "Quả táo nuột thế",
       answer_4: "I don’t know",
     },
+    correctAnswer: {
+      answer_1: false,
+      answer_2: true,
+      answer_3: false,
+      answer_4: false,
+    },
   },
   {
     id: 2,
@@ -19,6 +25,12 @@ export const Questions = [
       answer_7: "Trung Quốc",
       answer_8: "Việt Nam",
     },
+    correctAnswer: {
+      answer_5: false,
+      answer_6: false,
+      answer_7: false,
+      answer_8: true,
+    },
   },
   {
     id: 3,
@@ -28,6 +40,12 @@ export const Questions = [
       answer_10: "Chị là y tá",
       answer_11: "Anh là bác sĩ",
       answer_12: "Bà là luật sư",
+    },
+    correctAnswer: {
+      answer_9: false,
+      answer_10: false,
+      answer_11: true,
+      answer_12: false,
     },
   },
   {
@@ -41,6 +59,12 @@ export const Questions = [
       answer_15: "Họ đang xem tivi",
       answer_16: "Họ đang học tiếng Việt",
     },
+    correctAnswer: {
+      answer_13: false,
+      answer_14: false,
+      answer_15: true,
+      answer_16: false,
+    },
   },
   {
     id: 5,
@@ -51,6 +75,12 @@ export const Questions = [
       answer_19: "Đây là con gì?",
       answer_20: "Kia là con gì?",
     },
+    correctAnswer: {
+      answer_17: false,
+      answer_18: false,
+      answer_19: true,
+      answer_20: false,
+    },
   },
   {
     id: 6,
@@ -60,6 +90,12 @@ export const Questions = [
       answer_22: "Quyển / Tờ",
       answer_23: "Con / Bức",
       answer_24: "Quyển / Bức",
+    },
+    correctAnswer: {
+      answer_21: false,
+      answer_22: true,
+      answer_23: false,
+      answer_24: false,
     },
   },
 ];

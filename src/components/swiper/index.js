@@ -2,7 +2,7 @@ import { Swiper } from "swiper/react";
 import { useEffect, useState } from "react";
 import { Autoplay, Pagination } from "swiper/modules";
 
-export default function SwiperImage({ children }) {
+export default function SwiperImage({ children, slidesPerView, space }) {
   const [windowWith, setWindowWith] = useState(null);
   const [slidesPreview, setSlidesPreview] = useState();
   const [spaceBetween, setSpaceBetween] = useState();
@@ -13,8 +13,8 @@ export default function SwiperImage({ children }) {
     setWindowWith(window.innerWidth);
 
     if (newWindow > 1024) {
-      setSlidesPreview(3);
-      setSpaceBetween(40);
+      slidesPerView ? setSlidesPreview(slidesPerView) : setSlidesPreview(3);
+      space ? setSpaceBetween(space) : setSpaceBetween(40);
     } else {
       setSlidesPreview(1.5);
       setSpaceBetween(16);
