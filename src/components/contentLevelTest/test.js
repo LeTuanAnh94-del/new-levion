@@ -3,26 +3,26 @@ import { Questions } from "../../constant/levelTest";
 import CardQuestion from "../cardQuestion";
 import ProgressBar from "../progressBar";
 import ButtonBase from "../buttonBase";
+import usePaginationButton from "../../hooks/usePaginationButton";
 
 export default function Test({
   handleNextStep,
   setNumCorrectAnswers,
   setCorrectAnswers,
   correctAnswers,
+  selectedAnswer,
+  setSelectedAnswer,
 }) {
-  const [selectedAnswer, setSelectedAnswer] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
+  const {
+    handleNextPage,
+    handlePreviousPage,
+    questionsPerPage,
+    currentPage,
+    currentQuestions,
+  } = usePaginationButton({ Questions });
+
   const [completeQuestions, setCompleteQuestions] = useState(0);
   const [isAllQuestionsCompleted, setIsAllQuestionsCompleted] = useState(false);
-
-  const questionsPerPage = 5;
-
-  const indexOfLastQuestion = currentPage * questionsPerPage;
-  const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
-  const currentQuestions = Questions.slice(
-    indexOfFirstQuestion,
-    indexOfLastQuestion
-  );
 
   const handleSelectAnswer = (questionId, answer) => {
     setSelectedAnswer((prevAnswer) => ({
@@ -63,18 +63,6 @@ export default function Test({
     }
   };
 
-  const handleNext = () => {
-    const lastPage = Math.ceil(Questions.length / questionsPerPage);
-
-    if (currentPage < lastPage) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
-  };
-
-  const handleBack = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
-  };
-
   return (
     <div className="flex flex-col items-center w-ful bg-neutral-grey-lightest lg:mt-14 lg:mx-20 lg:rounded-lg lg:mb-40 lg:gap-10 lg:px-20 lg:py-10">
       <div className="flex flex-col px-4 py-10 gap-10 w-full lg:py-0">
@@ -92,7 +80,7 @@ export default function Test({
             sizeButton="small"
             variant="outline"
             className="text-primary text-base font-bold lg:text-lg"
-            onClick={handleBack}
+            onClick={handlePreviousPage}
             sizeResponsive="none"
             disable={currentPage > 1 ? false : true}
           />
@@ -101,7 +89,7 @@ export default function Test({
             sizeButton="small"
             variant="filled"
             className="text-white text-base font-bold lg:text-lg"
-            onClick={isAllQuestionsCompleted ? handleNextStep : handleNext}
+            onClick={isAllQuestionsCompleted ? handleNextStep : handleNextPage}
             sizeResponsive="none"
             disable={
               currentPage < Math.ceil(Questions.length / questionsPerPage) ||

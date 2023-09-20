@@ -30,6 +30,8 @@ module.exports = {
         "majorelle-blue": "#703DDA ",
         "violets-are-blue": "#9370F6 ",
         orange: "#FCA50B",
+        success: "#38B520",
+        red: "#BB222A",
       },
       borderRadius: {
         "4xl": "40px",

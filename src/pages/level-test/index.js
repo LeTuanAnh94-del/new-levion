@@ -9,6 +9,7 @@ export default function LevelTest() {
   const [currentStep, setCurrentStep] = useState(0);
   const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState({});
+  const [selectedAnswer, setSelectedAnswer] = useState({});
 
   const handelNextStep = () => {
     setCurrentStep(currentStep + 1);
@@ -29,6 +30,8 @@ export default function LevelTest() {
             setNumCorrectAnswers={setNumCorrectAnswers}
             setCorrectAnswers={setCorrectAnswers}
             correctAnswers={correctAnswers}
+            selectedAnswer={selectedAnswer}
+            setSelectedAnswer={setSelectedAnswer}
           />
         );
       case 2:
@@ -40,7 +43,12 @@ export default function LevelTest() {
           />
         );
       case 3:
-        return <CheckResult correctAnswers={correctAnswers} />;
+        return (
+          <CheckResult
+            correctAnswers={correctAnswers}
+            selectedAnswer={selectedAnswer}
+          />
+        );
     }
   };
   return <div className="w-full">{renderContentLevelTest()}</div>;
