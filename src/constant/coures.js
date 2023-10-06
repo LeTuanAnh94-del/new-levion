@@ -10,7 +10,7 @@ export const Courses = [
   {
     id: 2,
     imagePreview: "/img/image-preview-course.png",
-    level: "All levels",
+    level: "Basic level",
     skill: "Speaking Skills",
     nameCourse: "Master Your Pronunciation Course",
     priceCourse: 20,
@@ -18,7 +18,7 @@ export const Courses = [
   {
     id: 3,
     imagePreview: "/img/image-preview-course.png",
-    level: "All levels",
+    level: "Advanced level",
     skill: "Speaking Skills",
     nameCourse: "Master Your Pronunciation Course",
     priceCourse: 20,

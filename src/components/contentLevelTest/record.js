@@ -1,10 +1,6 @@
 import Image from "next/image";
-import { SwiperSlide } from "swiper/react";
 
 import ButtonBase from "../buttonBase";
-import SwiperImage from "../swiper";
-import CardCourse from "../cardCourse";
-import { Courses } from "../../constant/coures";
 import { Questions } from "../../constant/levelTest";
 
 export default function Record({
@@ -12,6 +8,11 @@ export default function Record({
   handleBackStep,
   handleNextStep,
 }) {
+  const level =
+    numCorrectAnswers < (1 / 2) * Questions.length
+      ? "Begin Level"
+      : "Advance Level";
+
   return (
     <div className="mt-10 mb-16 flex flex-col gap-16 lg:mt-16 lg:mb-40 lg:gap-25">
       <div className="mx-4 flex flex-col lg:mx-20 lg:px-45">
@@ -31,7 +32,7 @@ export default function Record({
               <p className="text-neutral-grey text-sm font-bold text-center lg:text-xl">
                 Your score means you might be ready to prepare for one of our
                 qualifications called{" "}
-                <span className="text-orange">Advance Level</span>
+                <span className="text-orange">{level}</span>
               </p>
             </div>
           </div>
@@ -54,18 +55,6 @@ export default function Record({
             />
           </div>
         </div>
-      </div>
-      <div className="flex flex-col gap-10">
-        <p className="text-neutral-dark-grey text-2xl font-bold text-center lg:text-3.5xl">
-          Recommend Courses for Advanced Level
-        </p>
-        <SwiperImage slidesPerView="4" spaceBetween="24">
-          {Courses.map((course) => (
-            <SwiperSlide key={course}>
-              <CardCourse course={course} />
-            </SwiperSlide>
-          ))}
-        </SwiperImage>
       </div>
     </div>
   );

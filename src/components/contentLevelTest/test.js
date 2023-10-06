@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Questions } from "../../constant/levelTest";
 import CardQuestion from "../cardQuestion";
 import ProgressBar from "../progressBar";
@@ -12,6 +12,7 @@ export default function Test({
   correctAnswers,
   selectedAnswer,
   setSelectedAnswer,
+  refresh,
 }) {
   const {
     handleNextPage,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import WelcomeLevelTest from "../../components/contentLevelTest/welcomeLevelTest";
 import Test from "../../components/contentLevelTest/test";
@@ -10,13 +10,14 @@ export default function LevelTest() {
   const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState({});
   const [selectedAnswer, setSelectedAnswer] = useState({});
+  const [refresh, setRefresh] = useState(false);
 
   const handelNextStep = () => {
     setCurrentStep(currentStep + 1);
   };
 
   const handleBackStep = () => {
-    setCurrentStep(currentStep - 1);
+    window.location.reload();
   };
 
   const renderContentLevelTest = () => {
@@ -32,6 +33,7 @@ export default function LevelTest() {
             correctAnswers={correctAnswers}
             selectedAnswer={selectedAnswer}
             setSelectedAnswer={setSelectedAnswer}
+            refresh={refresh}
           />
         );
       case 2:
@@ -51,5 +53,10 @@ export default function LevelTest() {
         );
     }
   };
+
+  useEffect(() => {
+    if (refresh) return;
+  }, [refresh]);
+
   return <div className="w-full">{renderContentLevelTest()}</div>;
 }

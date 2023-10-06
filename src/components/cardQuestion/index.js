@@ -10,7 +10,6 @@ export default function CardQuestion({
   correctAnswers,
   incorrectAnswer,
 }) {
-  console.log("🚀 ~ file: index.js:12 ~ selectedAnswer:", selectedAnswer);
   return (
     <div className="flex flex-col gap-10 ">
       {questions?.map((question) => {
