@@ -52,9 +52,18 @@ module.exports = {
         25: "100px",
       },
       padding: {
+        5.5: "20px",
+        15: "80px",
         25: "100px",
         45: "180px",
         67.5: "270px",
+      },
+      backgroundImage: {
+        "head-body": "url('/img/background-head-body.png')",
+      },
+      width: {
+        75: "300px",
+        120.75: "411px",
       },
     },
   },
