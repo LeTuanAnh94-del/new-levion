@@ -1,10 +1,11 @@
 const SIZE_BUTTON = {
   small: "px-6 py-2 ",
+  xs: "px-6 py-2.5",
   base: "px-6 py-4",
 };
 
 const SIZE_RESPONSIVE = {
-  none: "lg:px-6 lg:py-2",
+  none: "",
   sm: "lg:px-6 lg:py-4",
   small: "lg:px-10 lg:py-4 lg:rounded-lg",
 };
@@ -28,7 +29,7 @@ export default function ButtonBase({
   title,
   sizeButton = "small",
   variant = "filled",
-  sizeResponsive = "small",
+  sizeResponsive = "none",
   className,
   onClick,
   disable = false,
